@@ -14,7 +14,7 @@ CREATE TABLE cars (
     image BLOB,
     sold BOOLEAN DEFAULT FALSE
 );
-CREATE TABLE Persons (
+CREATE TABLE user (
     userID INTEGER(255) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     username varchar(255) NOT NULL,
     email varchar(255) NOT NULL,
