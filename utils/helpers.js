@@ -10,5 +10,6 @@ module.exports = {
     }
 
     return `<span for="img" aria-label="book">${book}</span>`;
+    // Comment
   },
 };
