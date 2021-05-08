@@ -39,13 +39,6 @@ User.init(
         len: [8],
       },
     },
-    car_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "car",
-        key: "id",
-      },
-    },
   },
   {
     hooks: {
