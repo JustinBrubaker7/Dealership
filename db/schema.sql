@@ -17,9 +17,9 @@ CREATE TABLE cars (
 CREATE TABLE Persons (
     userID INTEGER(255) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     username varchar(255) NOT NULL,
+    name varchar(255) NOT NULL,
     email varchar(255) NOT NULL,
     password varchar(255) NOT NULL,
-    name varchar(255) NOT NULL,
     carID INTEGER(255),
     FOREIGN KEY (carID) REFERENCES cars(carID)
     );

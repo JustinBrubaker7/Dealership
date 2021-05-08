@@ -23,4 +23,5 @@ sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log("Now listening"));
 });
 
-//makeing changes'
+//makeing changes
+//making some more changes
