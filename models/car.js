@@ -5,7 +5,7 @@ class Car extends Model {}
 
 Car.init(
   {
-    carID: {
+    id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,

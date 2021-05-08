@@ -1,18 +1,14 @@
-const Reader = require("./Reader");
-const LibraryCard = require("./LibraryCard");
+const User = require("./User");
+const Car = require("./car");
 
 // Where we put relationship from cars to users
 
-Reader.hasOne(LibraryCard, {
-  foreignKey: "reader_id",
-  // TODO: Add a comment describing the functionality of this property
-  // delete the card when the id is deleted
-  onDelete: "CASCADE",
+Car.hasMany(User, {
+  foreignKey: "car_id",
 });
 
-LibraryCard.belongsTo(Reader, {
-  foreignKey: "reader_id",
+User.belongsTo(Car, {
+  foreignKey: "car_id",
 });
 
-// TODO: Add a comment describing the functionality of this statement
-module.exports = { Reader, LibraryCard };
+module.exports = { Car, User };
