@@ -1,0 +1,28 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.car-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.car-holder {
+  display: flex;
+  flex-direction: row;
+}
+
+.car-image-holder {
+}
+
+.car-info-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.car-price-holder {
+  display: flex;
+  flex-direction: row;
+}
