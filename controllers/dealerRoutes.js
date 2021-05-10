@@ -3,7 +3,9 @@ const { User, Car } = require("../models");
 
 router.get("/", async (req, res) => {
   try {
-    res.send("hello world");
+    //if logged in
+
+    res.render("dealer");
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
