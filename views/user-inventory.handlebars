@@ -1,12 +1,14 @@
 <section>
     {{#each cars as |car|}}
     <section class="car-container">
-        <h1>{{car.car_year}} {{car.make}} {{car.model}} {{car.trim}}</h1>
+        <article class="car-title">
+            <h1>{{car.car_year}} {{car.make}} {{car.model}} {{car.trim}}</h1>
+        </article>
         <article class="car-holder">
             <article class="car-image-holder">
-                <img src={{car.image}} alt="Car image">
+                <img class="car-image" src={{car.image}} alt="Car image">
             </article>
-            <article class"car-info-holder">
+            <article class="car-info-holder">
                 <h2>Mileage: {{car.mileage}}</h2>
                 <h2>Color: {{car.color}}</h2>
                 <h2>Interior: {{car.interior_color}}</h2>

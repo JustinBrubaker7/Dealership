@@ -11,7 +11,6 @@ Car.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    // Added Color and Interior Color
     color: {
       type: DataTypes.STRING,
     },
@@ -31,17 +30,14 @@ Car.init(
       type: DataTypes.STRING,
     },
     price: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    // Changed a typo
     mileage: {
-      // Changed to decimal here
-      type: DataTypes.DECIMAL(10, 3),
+      type: DataTypes.STRING,
       allowNull: false,
     },
     vin: {
-      // Changed to string here
       type: DataTypes.STRING,
       allowNull: false,
     },
