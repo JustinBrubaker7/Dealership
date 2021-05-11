@@ -11,6 +11,12 @@ Car.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    color: {
+      type: DataTypes.STRING,
+    },
+    interior_color: {
+      type: DataTypes.STRING,
+    },
     make: {
       type: DataTypes.STRING,
     },
@@ -24,15 +30,15 @@ Car.init(
       type: DataTypes.STRING,
     },
     price: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    milage: {
-      type: DataTypes.INTEGER,
+    mileage: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     vin: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     condition_of_car: {

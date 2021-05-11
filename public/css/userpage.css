@@ -1,0 +1,110 @@
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: lightgray;
+}
+
+header {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+#search-input {
+  width: 10%;
+  height: 40%;
+}
+
+#search-button {
+  height: 50%;
+  width: 2%;
+}
+
+#facebook-link {
+  width: 10%;
+  text-align: center;
+}
+
+.header-top {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-bar {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(180, 32, 32);
+  height: 60px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#home-button {
+  width: 25%;
+  color: white;
+  background-color: rgb(27, 25, 25);
+  border-color: rgb(27, 25, 25);
+}
+
+#inventory-select {
+  width: 25%;
+  text-align: center;
+  color: white;
+  background-color: rgb(27, 25, 25);
+  border-color: rgb(27, 25, 25);
+}
+
+#aboutus-select {
+  width: 25%;
+  text-align: center;
+  color: white;
+  background-color: rgb(27, 25, 25);
+  border-color: rgb(27, 25, 25);
+}
+
+#review-select {
+  width: 25%;
+  text-align: center;
+  color: white;
+  background-color: rgb(27, 25, 25);
+  border-color: rgb(27, 25, 25);
+}
+
+.car-image {
+  border-color: white;
+  border-width: 10px;
+  border-style: solid;
+}
+
+.car-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.car-title {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  margin: 1%;
+}
+
+.car-holder {
+  display: flex;
+  flex-direction: row;
+}
+
+.car-info-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin: 1%;
+}
+
+.car-price-holder {
+  display: flex;
+  flex-direction: row;
+  margin: 1%;
+}
