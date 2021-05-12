@@ -45,7 +45,22 @@ router.get("/newcar", async (req, res) => {
 
 router.post("/newcar", async (req, res) => {
   try {
-    // post car data
+    console.log(req.body);
+    const newCarCreate = await Car.create({
+      color: req.body.color,
+      interior_color: req.body.interior_color,
+      make: req.body.make,
+      model: req.body.model,
+      car_year: req.body.car_year,
+      trim: req.body.trim,
+      price: req.body.price,
+      mileage: req.body.mileage,
+      vin: req.body.vin,
+      image: req.body.image,
+      sold: false,
+    }).then((newCar) => {
+      res.json(newCar);
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
