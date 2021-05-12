@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Car } = require("../models");
+const { User, Car, Review } = require("../models");
 
 router.get("/", async (req, res) => {
   try {
@@ -26,14 +26,32 @@ router.get("/inventory", async (req, res) => {
   }
 });
 
-router.get("/about", async (req, res) => {
+router.get("/review", async (req, res) => {
   try {
-    const carData = await Car.findAll();
+    const reviewData = await Review.findAll();
+    const userData = await User.findAll({
+      attributes: { exclude: ["password"] },
+    });
 
-    const cars = carData.map((carInfo) => carInfo.get({ plain: true }));
+    const reviews = reviewData.map((reviewInfo) =>
+      reviewInfo.get({ plain: true })
+    );
+    const users = userData.map((userInfo) => userInfo.get({ plain: true }));
 
-    res.render("user-inventory", {
-      cars,
+    for (i = 0; i < reviewData.length; i++) {
+      for (x = 0; x < userData.length; x++) {
+        if (reviewData[i].user_id === userData[x].id) {
+          reviewData[i] = {
+            user_id_username: userData[x].username,
+          };
+          console.log(userData[x].username);
+        }
+      }
+    }
+
+    res.render("user-reviews", {
+      reviews,
+      users,
       layout: "user-main.handlebars",
     });
   } catch (err) {
@@ -44,12 +62,7 @@ router.get("/about", async (req, res) => {
 
 router.get("/about", async (req, res) => {
   try {
-    const carData = await Car.findAll();
-
-    const cars = carData.map((carInfo) => carInfo.get({ plain: true }));
-
     res.render("user-about", {
-      cars,
       layout: "user-main.handlebars",
     });
   } catch (err) {

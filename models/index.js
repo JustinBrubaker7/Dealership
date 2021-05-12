@@ -1,5 +1,6 @@
 const User = require("./User");
 const Car = require("./car");
+const Review = require("./Review");
 
 // Where we put relationship from cars to users
 
@@ -12,4 +13,8 @@ Car.belongsTo(User, {
   onDelete: "CASCADE",
 });
 
-module.exports = { Car, User };
+User.hasMany(Review, {
+  foreignKey: "user_id",
+});
+
+module.exports = { Car, User, Review };

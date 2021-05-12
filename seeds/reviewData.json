@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "rating": 4,
+        "content": "They helped me out so much omg, it was the best experience ever.", 
+        "owner_name": "theRealHam"
+    },
+    {
+        "id": 2,
+        "rating": 5,
+        "content": "Wow very fun and fresh experience omg",
+        "owner_name": "notReallyBob"
+    }
+]
