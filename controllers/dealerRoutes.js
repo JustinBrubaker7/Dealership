@@ -1,14 +1,18 @@
 const router = require("express").Router();
 const { User, Car } = require("../models");
+const withAuth = require("../utils/auth");
 //dealer
 //user
 
 //returns hom dashboard page
-router.get("/", async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   try {
     //if logged in
 
-    res.render("dealer", { home: true });
+    res.render("dealer", {
+      home: true,
+      loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -55,7 +59,7 @@ router.put("/update/:id", async (req, res) => {
     console.log("made it tot the back end");
     const updateCar = await Car.update(
       {
-        sold: 1,
+        sold: true,
       },
       {
         where: {
@@ -63,19 +67,12 @@ router.put("/update/:id", async (req, res) => {
         },
       }
     ).then((updateCar) => {
-      // res.render("dealer-inventory", {
-      //   updateCar,
-      //   layout: "main.handlebars",
-      // });
-      res.redirect("back");
+      res.redirect(200, "/dealer");
+      res.status(200).json(updateCar);
+      console.log("sending..");
     });
 
-    // console.log("we did it");
-    // res.redirect("200", "/dealer");
-    // res.status(200).json(updateCar);
-    // res.render("dealer-inventory", {
-    //   layout: "main.handlebars",
-    // });
+    res.end();
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
