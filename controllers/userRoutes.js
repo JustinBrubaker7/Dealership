@@ -92,4 +92,8 @@ router.post("/api/newuser", async (req, res) => {
   }
 });
 
+router.post("/api/login", async (req, res) => {
+  console.log(req.body);
+});
+
 module.exports = router;

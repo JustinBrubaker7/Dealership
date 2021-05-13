@@ -2,48 +2,36 @@
     <article>
         Email: <input id="email" type="text" >
         Password: <input id="password" type="text" >
-        <button onclick=loginButton>Submit</button>
+        <button onclick=loginButton()>Submit</button>
     </article>
     <article>
 
     </article>
     <script>
 
-        const email = document.getElementById("email");
-        const password = document.getElementById("password"); 
-
-        if(email && password){
-            
-        }
-
-        const loginButton = async () => {
-            console.log("submitted");
+        function loginButton(){
 
             const Email = document.getElementById("email")
             const Password = document.getElementById("password")
 
-            try{
-                
-            }catch(err){
+            if(Email.value && Password.value){
+                userLogin = {
+                    email: Email.value,
+                    password: Password.value,
+                }
 
+                console.log(userLogin);
+
+                fetch("/user/api/login", {
+                    method: "POST",
+                    headers: {
+                    "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(userLogin),
+                });
+            }else{
+                window.alert("Please enter a password and email to login.")
             }
-
-            userData = {
-                username: Username.value, 
-                name: Name.value,
-                email: Email.value,
-                password: Password.value,
-            }
-
-            console.log(userData);
-
-            fetch("/user/api/newuser", {
-                method: "POST",
-                headers: {
-                "Content-Type": "application/json",
-                },
-                body: JSON.stringify(userData),
-            });
         }
     </script>
 </section>
