@@ -1,39 +1,55 @@
-<section class="">
+<div class="dashboard-form">
+  <!-- This example requires Tailwind CSS v2.0+ -->
+<div class="md:flex md:items-center md:justify-between mb-5">
+  <div class="flex-1 min-w-0">
+    <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+      Inventory
+    </h2>
+  </div>
+  <div class="mt-4 flex md:mt-0 md:ml-4">
+    <a href="/dealer/newcar">
+    <button type="button" class="ml-3 inline-flex items-center px-4 py-2 border border-black rounded-md shadow-sm text-sm font-medium text-black bg-white hover:bg-grey-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-grey-500">
+      add new car
+    </button>
+    </a>
+  </div>
+</div>
+
   <div class="">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div
-          class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
+          class="shadow overflow-hidden border-b border-gray-400 sm:rounded-lg"
         >
-          <table class="min-w-full divide-y divide-gray-200">
-            <thead class="bg-gray-50">
+          <table class="min-w-full divide-y divide-gray-300" id="inventory-table">
+            <thead class="bg-gray-200">
               <tr>
                 <th
                   scope="col"
-                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
                 >
                   Car
                 </th>
                 <th
                   scope="col"
-                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
                 >
                   Vin
                 </th>
                 <th
                   scope="col"
-                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
                 >
                   Status
                 </th>
                 <th
                   scope="col"
-                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider"
                 >
                   Location
                 </th>
                 <th scope="col" class="relative px-6 py-3">
-                  <span class="sr-only">Edit</span>
+                  <span class="sr-only">mark as sold</span>
                 </th>
               </tr>
             </thead>
@@ -53,7 +69,6 @@
                         <div class="text-sm font-medium text-gray-900">
                           {{car.make}},
                           {{car.model}}
-
                         </div>
                         <div class="text-sm text-gray-500">
                           {{car.trim}}
@@ -66,7 +81,7 @@
                     <div class="text-sm text-gray-500">{{car.vin}}</div>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
-                    {{#if cars.sold}}
+                    {{#if sold}}
                       <span
                         class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800"
                       >
@@ -83,8 +98,20 @@
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     Riverside
                   </td>
+                  {{# if sold}}
+                  {{else}}
+                  <td>
+                    <a>
+                      <button
+                        type="button"
+                        class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-yellow-200 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300" data-id={{car.id}}
+                      >
+                        mark sold
+                      </button>
+                    </a>
+                    {{/if}}
+                  </td>
                 </tr>
-              </tbody>
             {{/each}}
 
           </table>
@@ -92,22 +119,35 @@
       </div>
     </div>
   </div>
-</section>
+</div><script>
+const inventoryTable = document.getElementById("inventory-table");
 
-{{!-- 
-      <article class="car-title">
-        <h1>{{car.car_year}} {{car.make}} {{car.model}} {{car.trim}}</h1>
-      </article>
-      <article class="car-holder">
-        <article class="car-image-holder">
-          <img class="car-image" src={{car.image}} alt="Car image" />
-        </article>
-        <article class="car-info-holder">
-          <h2>Mileage: {{car.mileage}}</h2>
-          <h2>Color: {{car.color}}</h2>
-          <h2>Interior: {{car.interior_color}}</h2>
-        </article>
-        <article class="car-price-holder">
-          <h2>Price: {{car.price}}</h2>
-        </article>
-      </article> --}}
+const saveCar = (carData) =>
+  fetch("/dealer/newcar", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(carData),
+  });
+
+//marking car as sold
+const soldCar = (id) =>
+  fetch(`/dealer/update/${id} `, {
+    method: "PUT",
+    headers: {
+     "Content-Type": "application/json"
+    },
+  }).then((data) =>{
+    console.log(data)
+  })
+
+inventoryTable.addEventListener("click", function (event) {
+  const data = event.target 
+  //console.log(data)
+  const id = data.getAttribute('data-id');
+  console.log(id)
+  soldCar(id);
+});
+
+</script>    
