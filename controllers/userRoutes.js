@@ -29,29 +29,13 @@ router.get("/inventory", async (req, res) => {
 router.get("/review", async (req, res) => {
   try {
     const reviewData = await Review.findAll();
-    const userData = await User.findAll({
-      attributes: { exclude: ["password"] },
-    });
 
     const reviews = reviewData.map((reviewInfo) =>
       reviewInfo.get({ plain: true })
     );
-    const users = userData.map((userInfo) => userInfo.get({ plain: true }));
-
-    for (i = 0; i < reviewData.length; i++) {
-      for (x = 0; x < userData.length; x++) {
-        if (reviewData[i].user_id === userData[x].id) {
-          reviewData[i] = {
-            user_id_username: userData[x].username,
-          };
-          console.log(userData[x].username);
-        }
-      }
-    }
 
     res.render("user-reviews", {
       reviews,
-      users,
       layout: "user-main.handlebars",
     });
   } catch (err) {
@@ -68,6 +52,43 @@ router.get("/about", async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
+  }
+});
+
+router.get("/login", async (req, res) => {
+  try {
+    res.render("user-login", {
+      layout: "user-main.handlebars",
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/signup", async (req, res) => {
+  try {
+    res.render("user-signup", {
+      layout: "user-main.handlebars",
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.post("/api/newuser", async (req, res) => {
+  try {
+    await User.create({
+      username: req.body.username,
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    }).then((newUser) => {
+      res.json(newUser);
+    });
+  } catch (err) {
+    console.log(err);
   }
 });
 

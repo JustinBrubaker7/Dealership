@@ -13,8 +13,4 @@ Car.belongsTo(User, {
   onDelete: "CASCADE",
 });
 
-User.hasMany(Review, {
-  foreignKey: "user_id",
-});
-
 module.exports = { Car, User, Review };

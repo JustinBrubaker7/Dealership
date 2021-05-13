@@ -1,5 +1,15 @@
-<section>
-    {{#each reviews as |review|}}
-        <h1>{{{display_name review.user_id users}}}</h1>
-    {{/each}}
+<section class="review-holder">
+    <article class="read-review">
+        {{#each reviews as |review|}}
+        <h1>{{review.owner_name}}</h1>
+        <h1>{{review.rating}}</h1>
+        <p>{{review.content}}</p>
+        {{/each}}
+    </article>
+    <article class="submit-review">
+        <h1>Leave Us A Review</h1>
+        Content: <input type="text" >
+        Rating: <input type="text" >
+        <button>Submit</button>
+    </article>
 </section>
