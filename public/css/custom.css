@@ -1,17 +1,17 @@
 .dashboard-nav {
   height: 100%;
-  width: 300px;
+  width: 250px;
   position: absolute;
   left: 0;
   bottom: 0;
-  padding: 5px;
+  padding: 10px 5px;
   background-color: grey;
   position: fixed;
   z-index: 10;
 }
 
 .dashboard-card {
-  margin: 10px 10px 0px 310px;
+  margin: 20px 20px 0px 275px;
   font-size: 18px;
 }
 

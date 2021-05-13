@@ -1,12 +1,26 @@
 <div class="dashboard-form">
+  <div class="md:flex md:items-center md:justify-between mb-5">
+  <div class="flex-1 min-w-0">
+    <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+      New Car
+    </h2>
+  </div>
+  <div class="mt-4 flex md:mt-0 md:ml-4">
+    <a href="/dealer/inventory">
+    <button type="button" class="ml-3 inline-flex items-center px-4 py-2 border border-black rounded-md shadow-sm text-sm font-medium text-black bg-white hover:bg-grey-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-grey-500">
+      view inventory
+    </button>
+    </a>
+  </div>
+</div>
   <form class="divide-gray-200" method="POST">
       <div class="bg-grey-300">
         <div>
-          <h3 class="text-lg leading-6 font-medium text-gray-900">
+          {{!-- <h3 class="text-lg leading-6 font-medium text-gray-900">
             Add a new car
-          </h3>
+          </h3> --}}
           <p class="mt-1 max-w-2xl text-sm text-gray-500">
-            Add the information about the new car you are adding to your
+            Fill in the information about the new car you are adding to your
             dealership. Once you click save the car will be added to you
             dealerships website
           </p>
@@ -131,7 +145,7 @@
             class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
           >
             <label
-              for="milage"
+              for="mileage"
               class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
              Mileage
@@ -139,8 +153,8 @@
             <div class="mt-1 sm:mt-0 sm:col-span-2">
               <input
                 type="number"
-                name="milage"
-                id="milage"
+                name="mileage"
+                id="mileage"
                 class="max-w-lg block w-full shadow-md  focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
               />
             </div>
@@ -157,7 +171,7 @@
             </label>
             <div class="mt-1 sm:mt-0 sm:col-span-2">
               <input
-                type="number"
+                type="text"
                 name="vin"
                 id="vin"
                 
@@ -188,7 +202,7 @@
             class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
           >
             <label
-              for="condition"
+              for="condition_of_car"
               class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
             Condition
@@ -196,8 +210,8 @@
             <div class="mt-1 sm:mt-0 sm:col-span-2">
               <input
                 type="text"
-                name="condition"
-                id="condition"
+                name="condition_of_car"
+                id="condition_of_car"
                 class="max-w-lg block w-full shadow-md  focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
               />
             </div>
