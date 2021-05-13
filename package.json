@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "build-css": "tailwindcss build landing.css -o public/style.css"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +16,10 @@
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.14",
+    "tailwindcss": "^2.1.2"
+  },
   "description": ""
 }
