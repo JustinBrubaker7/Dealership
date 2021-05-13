@@ -224,10 +224,16 @@
       </div>
     </div>
     <div class="dashboard-card">
-
+    {{#if loggedIn}}
+    <button id="logout" class="btn-no-style">Logout</button>
+    {{else}}
+    <a href="/login">Login</a>
+    {{/if}}
       {{{body}}}
     </div>
-
+{{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
   </body>
 
 </html>
