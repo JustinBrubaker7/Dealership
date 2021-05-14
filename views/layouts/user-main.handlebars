@@ -18,6 +18,10 @@
             <a id="facebook-link" href="https://facebook.com">FaceBook</a>
             <button onclick='window.location.href="http://localhost:3001/user/login"'>Login</button>
             <button onclick='window.location.href="http://localhost:3001/user/signup"'>SignUp</button>
+            {{#if logged_in}}
+            <h1>Logged In:</h1>
+            <h1 id="username">{{user.username}}</h1>
+            {{/if}}
         </section>
 
         <section class="header-bar">

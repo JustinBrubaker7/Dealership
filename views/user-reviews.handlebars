@@ -6,10 +6,49 @@
         <p>{{review.content}}</p>
         {{/each}}
     </article>
+    {{#if logged_in}}
     <article class="submit-review">
         <h1>Leave Us A Review</h1>
-        Content: <input type="text" >
-        Rating: <input type="text" >
-        <button>Submit</button>
+        Content: <input id="content" type="text" >
+        Rating: <input id="rating" type="text" > /5
+        <button onclick=submitReview()>Submit</button>
     </article>
+    {{else}}
+    <article class="submit-review">
+        <h1>Log In To Leave Us A Review</h1>
+    </article>
+    {{/if}}
 </section>
+<script>
+    const submitReview = async () => {
+        const rating = document.getElementById("rating")
+        const content = document.getElementById("content")
+        const user_name = document.getElementById("username")
+
+        if(rating.value && content.value){
+            newReview = {
+                rating: rating.value,
+                content: content.value,
+                owner_name: user_name.innerHTML,
+            }
+            console.log(newReview);
+
+            const response = await fetch("/userapi/review",{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newReview),
+            });
+            
+            if(response.ok){
+                console.log("Submitting Review")
+                rating.value = '';
+                content.value = '';
+            }else{
+                alert('Failed to submit review.');
+                content.log(response);
+            }
+        }
+    }
+</script>
