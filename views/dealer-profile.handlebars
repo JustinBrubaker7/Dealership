@@ -15,15 +15,15 @@
 <h1>Car Color: {{car.color}}</h1>
 <h1>Interior color: {{car.interior_color}}</h1>
 <h1>Trim level: {{car.trim}}</h1>
-<h1>List Price ${{car.price}}</h1>
-<h1>Mileage {{car.mileage}}</h1>
+<h1>List Price: ${{car.price}}</h1>
+<h1>Mileage: {{car.mileage}}</h1>
 <h1>VIN #: {{car.vin}}</h1>
 <h1>Condition of Car: {{car.condition_of_car}}</h1>
-<h1>Is the car sold?
+<h1>Status:
   {{#if car.sold}}
-    Yes
+    Sold
   {{else}}
-    No
+    Available
   {{/if}}
 </h1>
 <article class="car-image-holder">

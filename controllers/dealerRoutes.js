@@ -40,7 +40,11 @@ router.get("/newcar", withAuth, async (req, res) => {
 //returns all inventory for inventory tab
 router.get("/inventory", withAuth, async (req, res) => {
   try {
-    const carData = await Car.findAll();
+    const carData = await Car.findAll({
+      where: {
+        sold: false,
+      },
+    });
 
     const cars = carData.map((carInfo) => carInfo.get({ plain: true }));
 
