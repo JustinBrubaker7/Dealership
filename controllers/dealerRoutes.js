@@ -133,6 +133,7 @@ router.post("/newcar", upload.single("file-upload"), async (req, res) => {
   }
 });
 
+
 //marks car as sold
 router.put("/:id", async (req, res) => {
   try {

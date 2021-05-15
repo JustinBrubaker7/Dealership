@@ -117,6 +117,7 @@
                       </button>
                     </a>
                 </td>
+
               </tr>
             {{/each}}
 
@@ -126,7 +127,6 @@
     </div>
   </div>
 </div><script>
-
 const carDeatils = document.getElementById("inventory-table");
 
 
@@ -147,7 +147,7 @@ inventoryTable.addEventListener("click", function (event) {
 
   const id = data.getAttribute('data-id');
   console.log(id)
-  soldCar(id);
+  {{!-- soldCar(id); --}}
 });
 
 </script>    
