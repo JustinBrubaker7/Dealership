@@ -11,7 +11,7 @@ const saveCar = (carData) =>
 
 //marking car as sold
 const soldCar = (carData) =>
-  fetch("/dealer/update/id", {
+  fetch(`/dealer/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

@@ -7,25 +7,59 @@
       Back
     </button>
   </a>
+
+  <a href="" id="sold-button">
+    <button
+      data-id={{car.id}}
+      type="button"
+      class="ml-3 inline-flex items-center px-4 py-2 border border-black rounded-md shadow-sm text-sm font-medium text-black bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200"
+    >
+      Mark sold
+    </button>
+  </a>
+</div>
+<div class="flex justify-between mt-3">
+  <h1 class="text-3xl font-bold">{{car.car_year}}
+    {{car.make}}
+    {{car.model}}</h1>
+  <h1 class="text-3xl font-bold">${{car.price}}</h1>
+</div>
+<div class="flex justify-between mt-1">
+  <h1 class="text-2xl">{{car.color}}</h1>
+  <h1 class="text-2xl">Mileage: {{car.mileage}}</h1>
 </div>
 
-<h1>Year: {{car.car_year}}</h1>
-<h1>Model: {{car.make}}</h1>
-<h1>Model: {{car.model}}</h1>
-<h1>Car Color: {{car.color}}</h1>
-<h1>Interior color: {{car.interior_color}}</h1>
-<h1>Trim level: {{car.trim}}</h1>
-<h1>List Price ${{car.price}}</h1>
-<h1>Mileage {{car.mileage}}</h1>
-<h1>VIN #: {{car.vin}}</h1>
-<h1>Condition of Car: {{car.condition_of_car}}</h1>
-<h1>Is the car sold?
-  {{#if car.sold}}
-    Yes
+<div class="flex justify-center m-3">
+  <img
+    class="w-3/5 shadow-md rounded-md px-0"
+    src="                          
+  {{#if car.image}}
+    {{car.image}}
   {{else}}
-    No
+    ../css/images/carImage.jpg
+  {{/if}} "
+    alt="Car image"
+  />
+</div>
+<hr class="my-3" />
+<h2 class="text-xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+  Details
+</h2>
+<h1><strong>Year:</strong> {{car.car_year}}</h1>
+<h1><strong>Make:</strong> {{car.make}}</h1>
+<h1><strong>Model:</strong> {{car.model}}</h1>
+<h1><strong>List Price:</strong> ${{car.price}}</h1>
+<h1><strong>Car Color:</strong> {{car.color}}</h1>
+<h1><strong>Interior color:</strong> {{car.interior_color}}</h1>
+<h1><strong>Trim level:</strong> {{car.trim}}</h1>
+<h1><strong>VIN #:</strong> {{car.vin}}</h1>
+<h1><strong>Condition of Car: </strong>{{car.condition_of_car}}</h1>
+<h1><strong>Status:</strong>
+  {{#if car.sold}}
+    Sold
+  {{else}}
+    Available
   {{/if}}
 </h1>
-<article class="car-image-holder">
-  <img class="car-image" src={{car.image}} alt="Car image" />
-</article>
+<script src="/js/sold.js"></script>
+

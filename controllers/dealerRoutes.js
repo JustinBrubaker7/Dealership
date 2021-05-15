@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const { User, Car } = require("../models");
 const withAuth = require("../utils/auth");
-//dealer
-//user
+var multer = require("multer");
+var upload = multer({ dest: "uploads/" });
+const fs = require("fs");
 
 //returns home dashboard page
 router.get("/", withAuth, async (req, res) => {
@@ -40,7 +41,11 @@ router.get("/newcar", withAuth, async (req, res) => {
 //returns all inventory for inventory tab
 router.get("/inventory", withAuth, async (req, res) => {
   try {
-    const carData = await Car.findAll();
+    const carData = await Car.findAll({
+      where: {
+        sold: false,
+      },
+    });
 
     const cars = carData.map((carInfo) => carInfo.get({ plain: true }));
 
@@ -100,7 +105,7 @@ router.get("/:id", withAuth, async (req, res) => {
 });
 
 //POST route to add a new car
-router.post("/newcar", async (req, res) => {
+router.post("/newcar", upload.single("file-upload"), async (req, res) => {
   try {
     console.log(req.body);
     const newCarCreate = await Car.create({
@@ -113,7 +118,8 @@ router.post("/newcar", async (req, res) => {
       price: req.body.price,
       mileage: req.body.mileage,
       vin: req.body.vin,
-      image: req.body.image,
+      condition_of_car: req.body.condition_of_car,
+      //image: req.file.mimetype,
       sold: false,
     }).then((newCar) => {
       res.render("dealer-confirm", {
@@ -127,10 +133,10 @@ router.post("/newcar", async (req, res) => {
   }
 });
 
-//this maybe broken
-router.put("/update/:id", withAuth, async (req, res) => {
+
+//marks car as sold
+router.put("/:id", async (req, res) => {
   try {
-    console.log("made it tot the back end");
     const updateCar = await Car.update(
       {
         sold: true,
@@ -140,14 +146,8 @@ router.put("/update/:id", withAuth, async (req, res) => {
           id: req.params.id,
         },
       }
-    ).then((updateCar) => {
-      res.redirect(200, "/dealer");
-
-      res.status(200).json(updateCar);
-      console.log("sending..");
-    });
-
-    res.end();
+    );
+    res.redirect("/dealer/inventory");
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

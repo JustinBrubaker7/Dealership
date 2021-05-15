@@ -18,3 +18,8 @@
 .dashboard-form {
   margin: 50px;
 }
+
+.logButton {
+  position: absolute;
+  bottom: 10;
+}
