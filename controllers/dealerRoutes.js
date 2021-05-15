@@ -7,10 +7,28 @@ const withAuth = require("../utils/auth");
 //returns home dashboard page
 router.get("/", withAuth, async (req, res) => {
   try {
-    //if logged in
+    const totalCars = await Car.count({ where: { sold: false } });
+    const soldCars = await Car.count({ where: { sold: true } });
 
     res.render("dealer", {
       home: true,
+      totalCars,
+      soldCars,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+//returns the form for a new car
+router.get("/newcar", withAuth, async (req, res) => {
+  try {
+    //if logged in
+
+    res.render("dealer-carform", {
+      newcar: true,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -67,52 +85,11 @@ router.get("/sold", withAuth, async (req, res) => {
 router.get("/:id", withAuth, async (req, res) => {
   try {
     const carData = await Car.findByPk(req.params.id);
-    console.log(carData);
-    const cars = carData.get({ plain: true });
-    console.log(cars);
+    const car = carData.get({ plain: true });
+    console.log(car);
     res.render("dealer-profile", {
       inventory: true,
-      cars,
-      loggedIn: req.session.loggedIn,
-      layout: "main.handlebars",
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-router.put("/update/:id", withAuth, async (req, res) => {
-  try {
-    console.log("made it tot the back end");
-    const updateCar = await Car.update(
-      {
-        sold: true,
-      },
-      {
-        where: {
-          id: req.params.id,
-        },
-      }
-    ).then((updateCar) => {
-      res.redirect(200, "/dealer");
-
-      res.status(200).json(updateCar);
-      console.log("sending..");
-    });
-
-    res.end();
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-//returns view to submit a new car
-router.get("/newcar", withAuth, async (req, res) => {
-  try {
-    res.render("dealer-newcar", {
-      newcar: true,
+      car,
       loggedIn: req.session.loggedIn,
       layout: "main.handlebars",
     });
@@ -150,4 +127,30 @@ router.post("/newcar", async (req, res) => {
   }
 });
 
+//this maybe broken
+router.put("/update/:id", withAuth, async (req, res) => {
+  try {
+    console.log("made it tot the back end");
+    const updateCar = await Car.update(
+      {
+        sold: true,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    ).then((updateCar) => {
+      res.redirect(200, "/dealer");
+
+      res.status(200).json(updateCar);
+      console.log("sending..");
+    });
+
+    res.end();
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 module.exports = router;
