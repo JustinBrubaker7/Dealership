@@ -52,10 +52,10 @@ Car.init(
       allowNull: false,
       default: false,
     },
-    dealer_id: {
+    user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "dealer",
+        model: "user",
         key: "id",
       },
     },

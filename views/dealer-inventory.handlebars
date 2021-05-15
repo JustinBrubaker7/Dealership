@@ -21,7 +21,7 @@
         <div
           class="shadow overflow-hidden border-b border-gray-400 sm:rounded-lg"
         >
-          <table class="min-w-full divide-y divide-gray-300" id="inventory-table">
+          <table class="min-w-full divide-y divide-gray-300" >
             <thead class="bg-gray-200">
               <tr>
                 <th
@@ -54,9 +54,6 @@
                 >
                   Details
                 </th>
-                <th scope="col" class="relative px-6 py-3">
-                  <span class="sr-only">mark as sold</span>
-                </th>
               </tr>
             </thead>
             {{#each cars as |car|}}
@@ -67,7 +64,13 @@
                       <div class="flex-shrink-0 h-10 w-10">
                         <img
                           class="h-10 w-10 rounded-lg"
-                          src="{{car.image}}"
+                          src="
+                          {{#if car.image}}
+                          {{car.image}}
+                          {{else}}
+                          ../css/images/carImage.jpg
+                          {{/if}} 
+                          "
                           alt=""
                         />
                       </div>
@@ -97,7 +100,7 @@
                       <span
                         class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
                       >
-                        live
+                        Available
                       </span>
                     {{/if}}
                   </td>
@@ -114,20 +117,6 @@
                       </button>
                     </a>
                 </td>
-            {{#if sold}}
-            {{else}}
-                  <td>
-                    <a>
-                      <button
-                        type="button"
-                        class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-yellow-200 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300" data-id={{car.id}}
-                      >
-                        mark sold
-                      </button>
-                    </a>
-                  </td>
-                  
-              {{/if}}
               </tr>
             {{/each}}
 
@@ -137,7 +126,7 @@
     </div>
   </div>
 </div><script>
-const inventoryTable = document.getElementById("inventory-table");
+
 const carDeatils = document.getElementById("inventory-table");
 
 
@@ -151,22 +140,14 @@ const saveCar = (carData) =>
   });
 
 //marking car as sold
-const soldCar = (id) =>
-  fetch(`/dealer/update/${id} `, {
-    method: "PUT",
-    headers: {
-     "Content-Type": "application/json"
-    },
-  }).then((data) =>{
-    console.log(data)
-  })
+
 
 inventoryTable.addEventListener("click", function (event) {
   const data = event.target 
-  //console.log(data)
+
   const id = data.getAttribute('data-id');
   console.log(id)
-  {{!-- soldCar(id); --}}
+  soldCar(id);
 });
 
 </script>    
