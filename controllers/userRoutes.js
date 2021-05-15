@@ -61,6 +61,44 @@ router.get("/inventory", async (req, res) => {
   }
 });
 
+// Inventory Specific Route
+router.get("/inventory/:id", async (req, res) => {
+  try {
+    let loggedUser;
+    let userPass = "Jack";
+
+    if (req.session.user_id) {
+      loggedUser = await User.findAll({
+        where: {
+          id: req.session.user_id,
+        },
+        raw: true,
+      });
+      console.log(loggedUser[0]);
+      userPass = loggedUser[0];
+    }
+
+    const thisCar = await Car.findAll({
+      where: {
+        id: req.params.id,
+      },
+      raw: true,
+    });
+
+    let car = thisCar[0];
+
+    res.render("user-specific-inventory", {
+      logged_in: req.session.logged_in,
+      user: userPass,
+      car,
+      layout: "user-main.handlebars",
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 // Review route
 router.get("/review", async (req, res) => {
   try {
