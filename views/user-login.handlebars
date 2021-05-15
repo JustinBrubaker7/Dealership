@@ -38,10 +38,12 @@
                 console.log("Logging you in.")
                 Email.value = '';
                 Password.value = '';
+                window.location.reload();
+                alert(`Logged in!`)
             } else {
                 alert("Failed to login");
                 console.log(response);
-                window.location.href = '/user/login';
+                
             }
         }else{
             alert('Please enter an email and password.')
@@ -49,14 +51,17 @@
     }
 
     const logoutButton = async () => {
+
         const response = await fetch("/userapi/logout", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
         });
+        
         if (response.ok){
-            console.log(response);
+            console.log('Successful Logout');
+            window.location.href = '/user';
         }else{
             alert('Failed to logout.');
         }
