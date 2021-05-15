@@ -9,17 +9,40 @@
         alt="Workflow"
       /> }}
       <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-        Sign in to your account
+        Register for a new account account
       </h2>
     </div>
-    <form class="mt-8 space-y-6 form login-form" action="/login" method="POST">
+    <form class="mt-8 space-y-6 form signup-form" action="#" method="POST">
       <input type="hidden" name="remember" value="true" />
       <div class="rounded-md shadow-sm -space-y-px">
         <div>
-          <label for="email-login" class="sr-only">Email address</label>
+          <label for="username-signup" class="sr-only">Username</label>
           <input
-            id="email-login"
-            name="email-login"
+            id="username-signup"
+            name="username-signup"
+            type="text"
+            required
+            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            placeholder="Username"
+          />
+        </div>
+        <div>
+          <label for="name-signup" class="sr-only">Name</label>
+          <input
+            id="name-signup"
+            name="name-signup"
+            type="text"
+            autocomplete="name"
+            required
+            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            placeholder="Name"
+          />
+        </div>
+        <div>
+          <label for="email-signup" class="sr-only">Email address</label>
+          <input
+            id="email-signup"
+            name="email-signup"
             type="email"
             autocomplete="email"
             required
@@ -28,10 +51,10 @@
           />
         </div>
         <div>
-          <label for="password-login" class="sr-only">Password</label>
+          <label for="password-signup" class="sr-only">Password</label>
           <input
-            id="password-login"
-            name="password-login"
+            id="password-signup"
+            name="password-signup"
             type="password"
             autocomplete="current-password"
             required
@@ -43,12 +66,12 @@
 
       <div class="flex items-center justify-center">
         <div class="text-sm">
-          Dont have a login?
+          Already have a login?
           <a
-            href="/register"
+            href="/login"
             class="font-medium text-indigo-600 hover:text-indigo-500"
           >
-            Register Here
+            Login Here
           </a>
         </div>
       </div>
@@ -74,7 +97,7 @@
               ></path>
             </svg>
           </span>
-          Sign in
+          Register
         </button>
       </div>
     </form>

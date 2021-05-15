@@ -1,3 +1,31 @@
-<h1 class="dashboard-card">
+<h1 class="text-center text-5xl">
   welcome to your dashboard
 </h1>
+
+<div class="grid gap-2 grid-cols-3 m-12">
+  {{! Card }}
+  <div
+    class="align-middle max-w-7xl mx-2 px-2 p-6 h-48 sm:px-6 border border-black rounded-md shadow-md font-lg"
+  >
+    <h1 class="text-center text-3xl">
+      Cars Sold in the last week
+    </h1>
+    <h2 class="text-center pt-6 text-5xl">{{soldCars}}</h2>
+  </div>
+  <div
+    class="align-middle max-w-7xl mx-2 px-2 p-6 h-48 sm:px-6 border border-black rounded-md shadow-md font-lg"
+  >
+    <h1 class="text-center text-3xl">
+      Revnue this month
+    </h1>
+    <h2 class="text-center pt-6"> details coming soon</h2>
+  </div>
+  <div
+    class="align-middle max-w-7xl mx-2 px-2 p-6 h-48 sm:px-6 border border-black rounded-md shadow-md font-lg"
+  >
+    <h1 class="text-center text-3xl">
+      Car on your lot
+    </h1>
+    <h2 class="text-center pt-6 text-5xl">{{totalCars}}</h2>
+  </div>
+</div>
