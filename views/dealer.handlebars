@@ -1,31 +1,99 @@
 <h1 class="text-center text-5xl">
-  welcome to your dashboard
+
+  Welcome to your dashboard
+
 </h1>
 
 <div class="grid gap-2 grid-cols-3 m-12">
   {{! Card }}
   <div
-    class="align-middle max-w-7xl mx-2 px-2 p-6 h-48 sm:px-6 border border-black rounded-md shadow-md font-lg"
+    class="align-middle max-w-7xl mx-2 px-2 p-6 h-48 sm:px-6 border border-black rounded-md shadow-lg font-lg"
   >
     <h1 class="text-center text-3xl">
-      Cars Sold in the last week
+      Cars sold in the last week
     </h1>
-    <h2 class="text-center pt-6 text-5xl">{{soldCars}}</h2>
+    <h2 class="text-center pt-6 text-5xl"><a
+        href="/dealer/sold"
+      >{{soldCars}}</a></h2>
   </div>
+  {{! Card }}
   <div
-    class="align-middle max-w-7xl mx-2 px-2 p-6 h-48 sm:px-6 border border-black rounded-md shadow-md font-lg"
+    class="align-middle max-w-7xl mx-2 px-2 p-6 h-48 sm:px-6 border border-black rounded-md shadow-lg font-lg"
   >
     <h1 class="text-center text-3xl">
       Revnue this month
     </h1>
     <h2 class="text-center pt-6"> details coming soon</h2>
   </div>
+  {{! Card }}
+
   <div
     class="align-middle max-w-7xl mx-2 px-2 p-6 h-48 sm:px-6 border border-black rounded-md shadow-md font-lg"
   >
     <h1 class="text-center text-3xl">
-      Car on your lot
+
+      Cars on your lot
     </h1>
-    <h2 class="text-center pt-6 text-5xl">{{totalCars}}</h2>
+    <h2 class="text-center pt-6 text-5xl"><a
+        href="dealer/inventory"
+      >{{totalCars}}</a></h2>
   </div>
+
+</div>
+<div class="grid gap-2 grid-cols-3 m-12">
+  {{! Card }}
+  <div
+    class="align-middle max-w-7xl mx-2 px-2 p-6 h-48 sm:px-6 border border-black rounded-md shadow-lg font-lg"
+  >
+    <h1 class="text-center text-3xl">
+      Add a new car
+    </h1>
+    <div class="text-center pt-6">
+      <a href="/dealer/newcar">
+        <button
+          type="button"
+          class="ml-3 inline-flex items-center px-4 py-2 border border-black rounded-md shadow-sm text-md font-medium text-black bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200"
+        >
+          Click Here
+        </button>
+      </a>
+    </div>
+  </div>
+  {{! Card }}
+  <div
+    class="align-middle max-w-7xl mx-2 px-2 p-6 h-48 sm:px-6 border border-black rounded-md shadow-lg font-lg"
+  >
+    <h1 class="text-center text-3xl">
+      View current inventory
+    </h1>
+    <div class="text-center pt-6">
+      <a href="/dealer/inventory">
+        <button
+          type="button"
+          class="ml-3 inline-flex items-center px-4 py-2 border border-black rounded-md shadow-sm text-md font-medium text-black bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200"
+        >
+          Click Here
+        </button>
+      </a>
+    </div>
+  </div>
+  {{! Card }}
+  <div
+    class="align-middle max-w-7xl mx-2 px-2 p-6 h-48 sm:px-6 border border-black rounded-md shadow-lg font-lg"
+  >
+    <h1 class="text-center text-3xl">
+      View sold cars
+    </h1>
+    <div class="text-center pt-6">
+      <a href="/dealer/sold">
+        <button
+          type="button"
+          class="ml-3 inline-flex items-center px-4 py-2 border border-black rounded-md shadow-sm text-md font-medium text-black bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200"
+        >
+          Click Here
+        </button>
+      </a>
+    </div>
+  </div>
+
 </div>
