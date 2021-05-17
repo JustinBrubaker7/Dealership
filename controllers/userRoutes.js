@@ -61,7 +61,7 @@ router.get("/inventory", async (req, res) => {
   }
 });
 
-//Specific Inventory Route
+// Inventory Specific Route
 router.get("/inventory/:id", async (req, res) => {
   try {
     let loggedUser;
@@ -78,13 +78,19 @@ router.get("/inventory/:id", async (req, res) => {
       userPass = loggedUser[0];
     }
 
-    const carData = await Car.findByPk(req.params.id);
-    const car = carData.get({ plain: true });
-    console.log(car);
+    const thisCar = await Car.findAll({
+      where: {
+        id: req.params.id,
+      },
+      raw: true,
+    });
+
+    let car = thisCar[0];
+
     res.render("user-specific-inventory", {
+      logged_in: req.session.logged_in,
       user: userPass,
       car,
-      loggedIn: req.session.loggedIn,
       layout: "user-main.handlebars",
     });
   } catch (err) {
