@@ -44,6 +44,9 @@ Car.init(
     condition_of_car: {
       type: DataTypes.STRING,
     },
+    url: {
+      type: DataTypes.TEXT('long'),
+    },
     image: {
       type: DataTypes.BLOB,
     },

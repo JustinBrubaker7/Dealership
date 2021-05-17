@@ -1,9 +1,6 @@
 const router = require("express").Router();
 const { User, Car } = require("../models");
 const withAuth = require("../utils/auth");
-var multer = require("multer");
-var upload = multer({ dest: "uploads/" });
-const fs = require("fs");
 
 //returns home dashboard page
 router.get("/", withAuth, async (req, res) => {
@@ -16,6 +13,30 @@ router.get("/", withAuth, async (req, res) => {
       totalCars,
       soldCars,
       loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+//returns all contacts from the contact us form
+router.get("/contacts", withAuth, async (req, res) => {
+  try {
+    const carData = await Car.findAll({
+      where: {
+        sold: false,
+      },
+    });
+
+    const cars = carData.map((carInfo) => carInfo.get({ plain: true }));
+
+    res.render("dealer-contacts", {
+      contacts: true,
+      title: "Contacts",
+      cars,
+      loggedIn: req.session.loggedIn,
+      layout: "main.handlebars",
     });
   } catch (err) {
     console.log(err);
@@ -104,10 +125,11 @@ router.get("/:id", withAuth, async (req, res) => {
   }
 });
 
+
 //POST route to add a new car
-router.post("/newcar", upload.single("file-upload"), async (req, res) => {
+router.post("/newcar", async (req, res) => {
+  console.log(req.body)
   try {
-    console.log(req.body);
     const newCarCreate = await Car.create({
       color: req.body.color,
       interior_color: req.body.interior_color,
@@ -119,7 +141,8 @@ router.post("/newcar", upload.single("file-upload"), async (req, res) => {
       mileage: req.body.mileage,
       vin: req.body.vin,
       condition_of_car: req.body.condition_of_car,
-      //image: req.file.mimetype,
+      url: req.body.url,
+      image: req.body.image,
       sold: false,
     }).then((newCar) => {
       res.render("dealer-confirm", {

@@ -33,11 +33,13 @@
   <img
     class="w-3/5 shadow-md rounded-md px-0"
     src="                          
-  {{#if car.image}}
-    {{car.image}}
-  {{else}}
-    ../css/images/carImage.jpg
-  {{/if}} "
+                          {{#if car.image}}
+                          {{car.image}}
+                          {{else if car.url}}
+                          {{car.url}}
+                          {{else}}
+                          ../css/images/carImage.jpg
+                          {{/if}} "
     alt="Car image"
   />
 </div>
