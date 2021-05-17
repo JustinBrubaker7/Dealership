@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Car, Review } = require("../models");
+const { User, Car, Review, StoredCar } = require("../models");
 
 router.get("/", async (req, res) => {
   try {
@@ -47,11 +47,28 @@ router.get("/inventory", async (req, res) => {
       userPass = loggedUser[0];
     }
 
+    const storageData = await StoredCar.findAll({});
+
     const cars = carData.map((carInfo) => carInfo.get({ plain: true }));
+    const storedCars = storageData.map((storeInfo) =>
+      storeInfo.get({ plain: true })
+    );
+
+    let newStorageCars = [];
+    // Make a new array based on date
+    console.log("-----------------------------------------------");
+    for (i = 10; i > 0; i--) {
+      if (storedCars[i - 1]) {
+        console.log(storedCars[i - 1]);
+        newStorageCars.push(storedCars[i - 1]);
+      }
+    }
+    console.log(newStorageCars);
 
     res.render("user-inventory", {
       logged_in: req.session.logged_in,
       user: userPass,
+      newStorageCars,
       cars,
       layout: "user-main.handlebars",
     });
@@ -61,7 +78,7 @@ router.get("/inventory", async (req, res) => {
   }
 });
 
-//Specific Inventory Route
+// Inventory Specific Route
 router.get("/inventory/:id", async (req, res) => {
   try {
     let loggedUser;
@@ -78,13 +95,52 @@ router.get("/inventory/:id", async (req, res) => {
       userPass = loggedUser[0];
     }
 
-    const carData = await Car.findByPk(req.params.id);
-    const car = carData.get({ plain: true });
-    console.log(car);
+    const thisCar = await Car.findAll({
+      where: {
+        id: req.params.id,
+      },
+      raw: true,
+    });
+
+    let car = thisCar[0];
+
+    let newStorageCars = await StoredCar.findAll();
+
+    const storedCars = newStorageCars.map((storeInfo) =>
+      storeInfo.get({ plain: true })
+    );
+
+    // Check if stored car already exists in list
+    let checkStorage = await StoredCar.findAll({
+      where: {
+        id: car.id,
+      },
+    });
+
+    if (checkStorage.length === 0) {
+      // Store cars
+      await StoredCar.create({
+        id: car.id,
+        color: car.color,
+        interior_color: car.interior_color,
+        make: car.make,
+        model: car.model,
+        car_year: car.car_year,
+        trim: car.trim,
+        price: car.price,
+        mileage: car.mileage,
+        vin: car.vin,
+        condition_of_car: car.condition_of_car,
+        image: car.image,
+        sold: car.sold,
+      });
+    }
+
     res.render("user-specific-inventory", {
+      logged_in: req.session.logged_in,
       user: userPass,
+      storedCars,
       car,
-      loggedIn: req.session.loggedIn,
       layout: "user-main.handlebars",
     });
   } catch (err) {

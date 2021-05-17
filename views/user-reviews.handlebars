@@ -1,9 +1,32 @@
+<div style="visibility:hidden">
+        <section class="header-top">
+            <h3>Search</h3>
+            <input id="search-input" type="text">
+            <button id="search-button"></button>
+            <a id="facebook-link" href="https://facebook.com">FaceBook</a>
+            <button onclick='window.location.href="http://localhost:3001/user/login"'>Login</button>
+            <button onclick='window.location.href="http://localhost:3001/user/signup"'>SignUp</button>
+            {{#if logged_in}}
+            <h1>Logged In:</h1>
+            <h1 id="username">{{user.username}}</h1>
+            {{/if}}
+        </section>
+
+        <section class="header-bar">
+            <Button onclick='window.location.href="http://localhost:3001/user"' class="header-button">Home</Button>
+            <Button onclick='window.location.href="http://localhost:3001/user/inventory"' class="header-button">View Used Cars</Button>
+            <Button onclick='window.location.href="http://localhost:3001/user/about"' id="aboutus-select">About Us</Button>
+            <button onclick='window.location.href="http://localhost:3001/user/review"' id="review-select">Reviews</button>
+        </section>
+</div>
 <section class="review-holder">
-    <article class="read-review">
+    <article class="review-layout-holder">
         {{#each reviews as |review|}}
-        <h1>{{review.owner_name}}</h1>
-        <h1>{{review.rating}}</h1>
-        <p>{{review.content}}</p>
+        <article class="read-review">
+            <h2>{{review.owner_name}}/5</h2>
+            <h3>{{review.rating}}/5</h3>
+            <p>{{review.content}}/5</p>
+        </article>
         {{/each}}
     </article>
     {{#if logged_in}}

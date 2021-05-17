@@ -12,23 +12,41 @@
 <body>
     <header>
         <section class="header-top">
-            <h3>Search</h3>
-            <input id="search-input" type="text">
-            <button id="search-button"></button>
-            <a id="facebook-link" href="https://facebook.com">FaceBook</a>
-            <button onclick='window.location.href="http://localhost:3001/user/login"'>Login</button>
-            <button onclick='window.location.href="http://localhost:3001/user/signup"'>SignUp</button>
-            {{#if logged_in}}
-            <h1>Logged In:</h1>
-            <h1 id="username">{{user.username}}</h1>
-            {{/if}}
+            <article>
+                <h1>WE ARE HERE</h1>
+                <h3>10851 Edison Ct, Rancho Cucamonga, CA 91730</h3>
+            </article>
+            <article class="header-search-holder">
+                <h3>Search</h3>
+                <input id="search-input" type="text">
+                <button id="search-button"></button>
+            </article>
+            <article class="header-login-button-holder">
+                {{#if logged_in}}
+                <button onclick=logoutButton()>Logout</button>
+                <h1>Logged In:</h1>
+                <h1 id="username">{{user.username}}</h1>
+                {{else}}
+                <button onclick='window.location.href="/user/login"'>Login</button>
+                <button onclick='window.location.href="/user/signup"'>SignUp</button>
+                {{/if}}
+            </article>
+            <article>
+                <h1>CONTACT US</h1>
+                <h3>(909) 244-1884</h3>
+            </article>
         </section>
 
         <section class="header-bar">
             <Button onclick='window.location.href="/user"' class="header-button">Home</Button>
             <Button onclick='window.location.href="/user/inventory"' class="header-button">View Used Cars</Button>
+<<<<<<< HEAD
             <Button onclick='window.location.href="/user/about"' id="aboutus-select">About Us</Button>
             <button onclick='window.location.href="/user/review"' id="review-select">Reviews</button>
+=======
+            <Button onclick='window.location.href="/user/about"' class="header-button">About Us</Button>
+            <button onclick='window.location.href="/user/review"' class="header-button">Reviews</button>
+>>>>>>> a5b7cc4e6f4fc541c87fd0b6b3d629ffd2c700b7
         </section>
     </header>
     <div style="background-color: lightgray; min-height: 100vh; margin 0px">
@@ -37,3 +55,27 @@
     
 </body>
 </html>
+<script>
+    const logoutButton = async () => {
+
+        const response = await fetch("/userapi/logout", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        
+        window.localaction.reload();
+
+        if (response.ok){
+            console.log('Successful Logout');
+            window.location.href = '/user';
+        }else{
+            alert('Failed to logout.');
+        }
+    }
+
+    function forgotPassword(){
+        window.location.href = "/user/email"
+    }
+</script>
