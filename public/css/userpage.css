@@ -132,6 +132,12 @@ header {
   justify-content: space-evenly;
 }
 
+.homepage-middle-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .homepage-middle-side {
   display: flex;
   flex-direction: column;

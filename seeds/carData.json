@@ -11,6 +11,7 @@
     "mileage": "22,397",
     "vin": "WBA4A9C57FGL8",
     "condition_of_car": "used",
+    "url": "",
     "image": "https://invimg2.autofunds.net/InventoryImages/2021/05/08/3550_1827794_14642927_4294608292021.jpg",
     "sold": false
   },
@@ -26,6 +27,7 @@
     "mileage": "86,261",
     "vin": "1G1BE5SM3H7100693",
     "condition_of_car": "used",
+    "url": "",
     "image": "https://invimg2.autofunds.net/InventoryImages/2021/04/21/3550_1815224_36863560_821821212021.jpg",
     "sold": true
   },
@@ -41,6 +43,7 @@
     "mileage": "80,127",
     "vin": "1G1ZE5ST4GF293155",
     "condition_of_car": "used",
+    "url": "",
     "image": "https://invimg2.autofunds.net/InventoryImages/2021/05/08/3550_1822322_12045380_871308072021.jpg",
     "sold": false
   },
@@ -56,6 +59,7 @@
     "mileage": "22,397",
     "vin": "WBA4A9C57FGL8",
     "condition_of_car": "used",
+    "url": "",
     "image": "https://invimg2.autofunds.net/InventoryImages/2021/05/08/3550_1827794_14642927_4294608292021.jpg",
     "sold": false
   },
@@ -71,6 +75,7 @@
     "mileage": "86,261",
     "vin": "1G1BE5SM3H7100693",
     "condition_of_car": "used",
+    "url": "",
     "image": "https://invimg2.autofunds.net/InventoryImages/2021/04/21/3550_1815224_36863560_821821212021.jpg",
     "sold": true
   },
@@ -86,6 +91,7 @@
     "mileage": "80,127",
     "vin": "1G1ZE5ST4GF293155",
     "condition_of_car": "used",
+    "url": "",
     "image": "https://invimg2.autofunds.net/InventoryImages/2021/05/08/3550_1822322_12045380_871308072021.jpg",
     "sold": false
   }
