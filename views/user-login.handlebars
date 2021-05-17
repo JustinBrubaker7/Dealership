@@ -1,16 +1,29 @@
+<div style="visibility:hidden">
+        <section class="header-top">
+            <h3>Search</h3>
+            <input id="search-input" type="text">
+            <button id="search-button"></button>
+            <a id="facebook-link" href="https://facebook.com">FaceBook</a>
+            <button onclick='window.location.href="http://localhost:3001/user/login"'>Login</button>
+            <button onclick='window.location.href="http://localhost:3001/user/signup"'>SignUp</button>
+            <h1>Logged In:</h1>
+            <h1 id="username">{{user.username}}</h1>
+        </section>
+
+        <section class="header-bar">
+            <Button onclick='window.location.href="http://localhost:3001/user"' class="header-button">Home</Button>
+            <Button onclick='window.location.href="http://localhost:3001/user/inventory"' class="header-button">View Used Cars</Button>
+            <Button onclick='window.location.href="http://localhost:3001/user/about"' id="aboutus-select">About Us</Button>
+            <button onclick='window.location.href="http://localhost:3001/user/review"' id="review-select">Reviews</button>
+        </section>
+</div>
 <section>
-    {{#if logged_in}}
-    <article>
-        <button onclick=logoutButton()>Logout</button>
-    </article>
-    {{else}}
     <article class="login-form">
         Email: <input id="email" type="text" >
         Password: <input id="password" type="text" >
         <button onclick=loginButton()>Submit</button>
         <button onclick=forgotPassword()>I Forgot My Password</button>
     </article>
-    {{/if}}
 </section>
 
 <script>
@@ -38,7 +51,7 @@
                 console.log("Logging you in.")
                 Email.value = '';
                 Password.value = '';
-                window.location.reload();
+                window.location.href='/user';
                 alert(`Logged in!`)
             } else {
                 alert("Failed to login");
@@ -48,26 +61,5 @@
         }else{
             alert('Please enter an email and password.')
         };
-    }
-
-    const logoutButton = async () => {
-
-        const response = await fetch("/userapi/logout", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        
-        if (response.ok){
-            console.log('Successful Logout');
-            window.location.href = '/user';
-        }else{
-            alert('Failed to logout.');
-        }
-    }
-
-    function forgotPassword(){
-        window.location.href = "/user/email"
     }
 </script>

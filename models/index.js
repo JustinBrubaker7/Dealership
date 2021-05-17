@@ -1,6 +1,7 @@
 const User = require("./User");
 const Car = require("./car");
 const Review = require("./Review");
+const StoredCar = require("./storedCars");
 
 // Where we put relationship from cars to users
 
@@ -13,4 +14,4 @@ Car.belongsTo(User, {
   onDelete: "CASCADE",
 });
 
-module.exports = { Car, User, Review };
+module.exports = { Car, User, Review, StoredCar };
