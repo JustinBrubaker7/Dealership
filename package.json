@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
+<<<<<<< HEAD
     "build-css": "tailwindcss build landing.css -o public/style.css"
+=======
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+>>>>>>> 4e0126f9145874988897aec6e9177761f0273b2b
   },
   "keywords": [],
   "author": "",
@@ -14,6 +20,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "mysql2": "^2.2.5",
+    "nodemon": "^2.0.7",
     "sequelize": "^6.3.5"
   },
   "devDependencies": {
