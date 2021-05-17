@@ -128,28 +128,4 @@
       </div>
     </div>
   </div>
-</div><script>
-const carDeatils = document.getElementById("inventory-table");
-
-
-const saveCar = (carData) =>
-  fetch("/dealer/newcar", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(carData),
-  });
-
-//marking car as sold
-
-
-inventoryTable.addEventListener("click", function (event) {
-  const data = event.target 
-
-  const id = data.getAttribute('data-id');
-  console.log(id)
-  {{!-- soldCar(id); --}}
-});
-
-</script>    
+</div>
