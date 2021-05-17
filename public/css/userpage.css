@@ -7,6 +7,7 @@ body {
 }
 
 header {
+  font-family: "Roboto", sans-serif;
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -130,6 +131,12 @@ header {
   height: 600px;
   background-color: green;
   justify-content: space-evenly;
+}
+
+.homepage-middle-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .homepage-middle-side {
