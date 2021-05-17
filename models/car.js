@@ -45,7 +45,7 @@ Car.init(
       type: DataTypes.STRING,
     },
     url: {
-      type: DataTypes.TEXT('long'),
+      type: DataTypes.TEXT("long"),
     },
     image: {
       type: DataTypes.BLOB,
