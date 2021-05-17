@@ -1,3 +1,146 @@
-<section>
-    <h3>This is the current template, user-homepage</h3>
+<div style="visibility:hidden">
+        <section class="header-top">
+            <h3>Search</h3>
+            <input id="search-input" type="text">
+            <button id="search-button"></button>
+            <a id="facebook-link" href="https://facebook.com">FaceBook</a>
+            <button onclick='window.location.href="http://localhost:3001/user/login"'>Login</button>
+            <button onclick='window.location.href="http://localhost:3001/user/signup"'>SignUp</button>
+            {{#if logged_in}}
+            <h1>Logged In:</h1>
+            <h1 id="username">{{user.username}}</h1>
+            {{/if}}
+        </section>
+
+        <section class="header-bar">
+            <Button onclick='window.location.href="http://localhost:3001/user"' class="header-button">Home</Button>
+            <Button onclick='window.location.href="http://localhost:3001/user/inventory"' class="header-button">View Used Cars</Button>
+            <Button onclick='window.location.href="http://localhost:3001/user/about"' id="aboutus-select">About Us</Button>
+            <button onclick='window.location.href="http://localhost:3001/user/review"' id="review-select">Reviews</button>
+        </section>
+</div>
+<section class="homepage-holder">
+    <section class="homepage-top-holder">
+        <section>
+                <!-- Slideshow container -->
+            <div class="slideshow-container">
+
+            <!-- Full-width images with number and caption text -->
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="https://wallpaperaccess.com/full/11207.jpg" style="width:100%">
+                <div class="text">Better Cars</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="https://cutewallpaper.org/21/cars-hd-wallpapers/Car-HD-wallpaper-1920x1080-16429.jpg" style="width:100%">
+                <div class="text">Better Buyer Experience</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="https://wallpaperaccess.com/full/40047.jpg" style="width:100%">
+                <div class="text">Your Dealer Name Here</div>
+            </div>
+
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <br>
+
+            <!-- The dots/circles -->
+            <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+                
+        </section>
+    </section>
+    <section class="homepage-middle-holder">
+        <article class="homepage-middle-side">
+            <h2>Sign Up For An In-Store Appointment Today!</h2>
+            <div class="homepage-middle-input">
+                <h1>Name</h1>
+                <input type="text">
+            </div>
+            <div class="homepage-middle-input">
+                <h1>Email</h1>
+                <input type="text">
+            </div>
+            <div class="homepage-middle-input">
+                <h1>Telephone#</h1>
+                <input type="text">
+            </div>
+        </article>
+        <article class="homepage-middle-side">
+            <h2>Buy Your First Car Today!</h2>
+            <a href="/user/inventory">
+                <img style="max-width: 100%; height: auto;" src="https://storage.googleapis.com/kx-live-ih/images/Happy_blonde_woman_showing_her_key.2e16d0ba.fill-800x450.jpg" alt="">
+            </a>
+        </article>
+    </section>
+    <section class="homepage-bottom-holder">
+        <article class="homepage-bottom-side">
+            <article class="homepage-review">
+                <h2>Checkout Reviews From Buyers Like You</h2>
+                <a href="/user/review">
+                    <img style="border-radius: 20px;" src="https://www.sierrapacificfcu.org/wp-content/uploads/2017/08/excited-guy-red-car.jpg" alt="">
+                </a>
+            </article>
+            <article class="business-hours">
+                <h2>Business Hours</h2>
+                <h2>Monday- Wednesday; 8:00am - 9:00pm</h2>
+                <h2>Thursday - Friday; 8:00am - 10:30pm</h2>
+                <h2>Saturday- Sunday; 10:00am - 5:00pm</h2>
+            </article>
+        </article>
+        <article class="homepage-bottom-bottom">
+            <article class="homepage-bottom-about">
+                <h2>About Us</h2>
+                <h3>Daniel Moore: https://github.com/wron1</h3>
+                <h3>Justin Brubaker: https://github.com/JustinBrubaker7</h3>
+                <h3>Rene Zendejas: https://github.com/RZM1993</h3>
+            </article>
+            <article class="homepage-bottom-about">
+                <h2>Contact Us</h2>
+                <h3>yourcardealership.com</h3>
+                <h3>(909) 244-1884</h3>
+                <h3>yourdealership@dealer.com</h3>
+            </article>
+        </article>
+    </section>
 </section>
+
+<script>
+        var slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+    showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+    showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    }
+</script>
