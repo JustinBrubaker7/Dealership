@@ -23,9 +23,9 @@
     <article class="review-layout-holder">
         {{#each reviews as |review|}}
         <article class="read-review">
-            <h2>{{review.owner_name}}/5</h2>
-            <h3>{{review.rating}}/5</h3>
-            <p>{{review.content}}/5</p>
+            <h2>{{review.owner_name}}</h2>
+            <h3>Rating: {{review.rating}}/5</h3>
+            <p>{{review.content}}</p>
         </article>
         {{/each}}
     </article>
