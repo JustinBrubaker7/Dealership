@@ -29,7 +29,14 @@
         <article class="car-holder">
             <article class="car-image-holder">
                 <a href="/user/inventory/{{car.id}}">
-                    <img class="car-image" src={{car.image}} alt="Car image">
+                    <img style="width: 800px;" class="car-image" src="
+                    {{#if car.image}}
+                          {{car.image}}
+                    {{else if car.url}}
+                          {{car.url}}
+                    {{else}}
+                          ../css/images/carImage.jpg
+                    {{/if}}" alt="Car image">
                 </a>
             </article>
             <article class="inventory-holder">
@@ -54,7 +61,14 @@
             <h1>{{newStorageCar.make}} {{newStorageCar.model}}</h1> 
             <div class="recent-image">
                 <a class="recent-car-image" href="/user/inventory/{{newStorageCar.id}}">
-                    <img  src={{newStorageCar.image}} alt="Car image">
+                    <img  src="
+                {{#if newStorageCar.image}}
+                      {{newStorageCar.image}}
+                {{else if newStorageCar.url}}
+                      {{newStorageCar.url}}
+                {{else}}
+                        ../css/images/carImage.jpg
+                {{/if}}" alt="Car image">
                 </a>
             </div>
         </article>
