@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 const transporter = require("../public/js/nodemailer");
 const { update } = require("../models/User");
+const Contact = require("../models/Contact");
 
 // Signup Route
 router.post("/signup", async (req, res) => {
@@ -113,6 +114,17 @@ router.post("/review", async (req, res) => {
     rating: req.body.rating,
     content: req.body.content,
     owner_name: req.body.owner_name,
+  });
+});
+
+// Submit a Contact
+router.post("/contact", async (req, res) => {
+  console.log(req.body);
+  await Contact.create({
+    name: req.body.name,
+    email: req.body.email,
+    number: req.body.number,
+    location: req.body.location,
   });
 });
 
