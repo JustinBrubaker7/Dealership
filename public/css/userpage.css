@@ -8,6 +8,7 @@ body {
 
 header {
   font-family: "Manrope", sans-serif;
+
   display: flex;
   width: 100%;
   flex-direction: column;

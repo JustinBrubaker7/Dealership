@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Car } = require("../models");
+const { User, Car, Contact } = require("../models");
 const withAuth = require("../utils/auth");
 
 //returns home dashboard page
@@ -23,18 +23,14 @@ router.get("/", withAuth, async (req, res) => {
 //returns all contacts from the contact us form
 router.get("/contacts", withAuth, async (req, res) => {
   try {
-    const carData = await Car.findAll({
-      where: {
-        sold: false,
-      },
-    });
+    const contactData = await Contact.findAll();
 
-    const cars = carData.map((carInfo) => carInfo.get({ plain: true }));
+    const contacts = contactData.map((contactInfo) => contactInfo.get({ plain: true }));
 
     res.render("dealer-contacts", {
       contacts: true,
       title: "Contacts",
-      cars,
+      contacts,
       loggedIn: req.session.loggedIn,
       layout: "main.handlebars",
     });
