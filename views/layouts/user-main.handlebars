@@ -16,29 +16,24 @@
             <input id="search-input" type="text">
             <button id="search-button"></button>
             <a id="facebook-link" href="https://facebook.com">FaceBook</a>
+            <button onclick='window.location.href="http://localhost:3001/user/login"'>Login</button>
+            <button onclick='window.location.href="http://localhost:3001/user/signup"'>SignUp</button>
+            {{#if logged_in}}
+            <h1>Logged In:</h1>
+            <h1 id="username">{{user.username}}</h1>
+            {{/if}}
         </section>
 
         <section class="header-bar">
-            <Button id="home-button">Home</Button>
-            <select name="inventory" id="inventory-select">
-                <option value="">View Used Cars</option>
-                <option value="">View Featured Cars</option>
-                <option value="">View Used Cars Under $10,000</option>
-            </select>
-            <select name="about us" id="aboutus-select">
-                <option value="">Our Staff</option>
-                <option value="">Contact Us</option>
-                <option value="">Employment Opportunities</option>
-            </select>
-            <select name="review" id="review-select">
-                <option value="">Submit Review</option>
-                <option value="">View Reviews</option>
-            </select>
+            <Button onclick='window.location.href="http://localhost:3001/user"' class="header-button">Home</Button>
+            <Button onclick='window.location.href="http://localhost:3001/user/inventory"' class="header-button">View Used Cars</Button>
+            <Button onclick='window.location.href="http://localhost:3001/user/about"' id="aboutus-select">About Us</Button>
+            <button onclick='window.location.href="http://localhost:3001/user/review"' id="review-select">Reviews</button>
         </section>
     </header>
     <div style="background-color: lightgray; min-height: 100vh; margin 0px">
         {{{body}}}
     </div>
+    
 </body>
-
 </html>
