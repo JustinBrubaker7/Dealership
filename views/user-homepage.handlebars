@@ -64,15 +64,15 @@
             <h2>Sign Up For An In-Store Appointment Today!</h2>
             <div class="homepage-middle-input">
                 <h1>Name</h1>
-                <input type="text">
+                <input id="name"type="text">
             </div>
             <div class="homepage-middle-input">
                 <h1>Email</h1>
-                <input type="text">
+                <input id="email"type="text">
             </div>
             <div class="homepage-middle-input">
                 <h1>Telephone#</h1>
-                <input type="text">
+                <input id="number"id="phone" type="text">
             </div>
             <div class="homepage-middle-input">
                 <h1>Location</h1>
@@ -83,7 +83,7 @@
                 </select>
             </div>
             
-            <button>Submit</button>
+            <button onclick=submitContact()>Submit</button>
 
             <h2>We'll Contact You ASAP!</h2>
         </article>
@@ -127,7 +127,44 @@
 </section>
 
 <script>
-        var slideIndex = 1;
+
+    const submitContact = async () =>{
+
+        userName = document.getElementById("name").value;
+        userEmail = document.getElementById("email").value;
+        userNumber = document.getElementById("number").value;
+        userLocation = document.getElementById("location-select").value;
+
+        newContact = {
+            name: userName,
+            email: userEmail,
+            number: userNumber,
+            location: userLocation,
+        };
+
+        const response = await fetch("/userapi/contact", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newContact),
+        });
+
+        userName = '';
+        userEmail = '';
+        userNumber = '';
+        userLocation = '';
+
+        if (response.ok){
+            console.log(response);
+            alert('Password changed successfully')
+
+        }else{
+            alert('Failed to change passwords.');
+        }
+    }
+
+    var slideIndex = 1;
     showSlides(slideIndex);
 
     // Next/previous controls
@@ -155,4 +192,6 @@
     slides[slideIndex-1].style.display = "block";
     dots[slideIndex-1].className += " active";
     }
+
+    
 </script>

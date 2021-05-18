@@ -31,10 +31,19 @@
     </article>
     {{#if logged_in}}
     <article class="submit-review">
-        <h1>Leave Us A Review</h1>
-        Content: <input id="content" type="text" >
-        Rating: <input id="rating" type="text" > /5
-        <button onclick=submitReview()>Submit</button>
+        <div class="review-inputs">
+            <h1>Leave Us A Review</h1>
+        </div>
+        <div class="review-inputs">
+            Content: <input id="content" type="text" >
+
+        </div>
+        <div class="review-inputs">
+            Rating: <input id="rating" type="text" > /5
+        </div>
+        <div class="review-inputs">
+            <button onclick=submitReview()>Submit</button>
+        </div>
     </article>
     {{else}}
     <article class="submit-review">
