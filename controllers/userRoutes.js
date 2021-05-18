@@ -150,7 +150,7 @@ router.get("/inventory/:id", async (req, res) => {
 });
 
 // Inventory Search Car Route
-router.get("/inventory/:make", async (req, res) => {
+router.get("/inventory/search/:make", async (req, res) => {
   try {
     let loggedUser;
     let userPass = "Jack";
@@ -170,48 +170,22 @@ router.get("/inventory/:make", async (req, res) => {
       where: {
         make: req.params.make,
       },
-      raw: true,
     });
-
-    let car = thisCar[0];
 
     let newStorageCars = await StoredCar.findAll();
 
-    const storedCars = newStorageCars.map((storeInfo) =>
-      storeInfo.get({ plain: true })
+    const storedCars = newStorageCars.map((storedInfo) =>
+      storedInfo.get({ plain: true })
     );
 
-    // Check if stored car already exists in list
-    let checkStorage = await StoredCar.findAll({
-      where: {
-        id: car.id,
-      },
-    });
+    const cars = thisCar.map((storeInfo) => storeInfo.get({ plain: true }));
 
-    if (checkStorage.length === 0) {
-      // Store cars
-      await StoredCar.create({
-        id: car.id,
-        color: car.color,
-        interior_color: car.interior_color,
-        make: car.make,
-        model: car.model,
-        car_year: car.car_year,
-        trim: car.trim,
-        price: car.price,
-        mileage: car.mileage,
-        vin: car.vin,
-        condition_of_car: car.condition_of_car,
-        image: car.image,
-        sold: car.sold,
-      });
-    }
-
-    res.render("user-specific-inventory", {
+    console.log(cars);
+    res.render("user-inventory", {
       logged_in: req.session.logged_in,
       user: userPass,
       storedCars,
-      car,
+      cars,
       layout: "user-main.handlebars",
     });
   } catch (err) {
@@ -389,5 +363,7 @@ router.get("/password/:email", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// Search route
 
 module.exports = router;
