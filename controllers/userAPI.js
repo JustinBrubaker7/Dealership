@@ -76,7 +76,7 @@ router.post("/email", async (req, res) => {
     from: process.env.EMAIL_USER,
     to: email,
     subject: "Password Change",
-    text: `Follow This Link to change your password: http://localhost:3001/user/password/${email}`,
+    text: `Follow This Link to change your password: https://rocky-river-62832.herokuapp.com/${email}`,
   };
 
   transporter.sendMail(mailOptions, function (error, info) {

@@ -8,7 +8,6 @@ body {
 
 header {
   font-family: "Manrope", sans-serif;
-
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -48,8 +47,12 @@ header {
   display: flex;
   flex-direction: row;
   height: 40px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+}
+
+#search-input {
+  width: 100%;
 }
 
 .header-login-button-holder {
