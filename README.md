@@ -13,7 +13,7 @@ Thank you for viewing our project and we hope you enjoy.
 ## Usage: Dealer
 
 This page is located at the /dealer path and is required to move to access the rest of the dealer routes. Signing in or signing up happens here on the dealer end.
-![Dealer Sign In Screen](assets/img/DealerSignin.PNG?raw=true)
+![Dealer Sign In Screen](assets/img/DealerSignIn.PNG?raw=true)
 
 Upon signing in as a dealer you are met with your dashboard displaying helpful numbers detailing your car lot.
 ![Dealer Dashboard Screen](assets/img/DealerDashboard.PNG?raw=true)
@@ -36,7 +36,7 @@ Finally, clicking "Your Website" from the dashboard or sidebar will take you to 
 ## Usage: User
 
 This page is the main landing page that customers will see upon entering your website.
-![USer Homepage screen](assets/img/UserDashboard.PNG?raw=true)
+![User Homepage screen](assets/img/UserDashboard.PNG?raw=true)
 
 Scrolling down the page will take you to a submission form which is where that backend contacts list is populated from.
 ![Contact Submission form](assets/img/UserContactSubmit.PNG?raw=true)
