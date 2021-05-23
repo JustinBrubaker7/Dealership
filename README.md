@@ -3,7 +3,7 @@
 ## Description
 This group collaborative project made for a decent challenge tackling a very interesting concept. A dealership webpage with a functioning backend for the dealership owner as well as a functioning frontend for customers which serves that dealer backend. Justin handled the backend dealership portion and Daniel handled the frontend customer portion. The collaborative effort was welcome and very much needed for such a large project. For only having 2 weeks of preparation the execution was more than successful and helped our team grow immensely.
 
-Our final page is deployed here: https://rocky-river-62832.herokuapp.com/dealer
+Our project is deployed on heroku here: https://rocky-river-62832.herokuapp.com/dealer
 
 Thank you for viewing our project and we hope you enjoy.
 
