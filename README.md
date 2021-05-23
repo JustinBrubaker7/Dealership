@@ -6,7 +6,7 @@ Thank you for viewing our project and we hope you enjoy.
 
 ##### Table of Contents
 [Usage: Dealer](#usage-dealer)<br>
-[Usage: User(#usage-user)<br>
+[Usage: User](#usage-user)<br>
 [License](#license)<br>
 
 <a name="usage-dealer"></a>
