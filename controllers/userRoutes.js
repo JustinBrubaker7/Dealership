@@ -104,11 +104,21 @@ router.get("/inventory/:id", async (req, res) => {
 
     let car = thisCar[0];
 
-    let newStorageCars = await StoredCar.findAll();
+    let storageCars = await StoredCar.findAll();
 
-    const storedCars = newStorageCars.map((storeInfo) =>
+    const storedCars = storageCars.map((storeInfo) =>
       storeInfo.get({ plain: true })
     );
+
+    let newStorageCars = [];
+    // Make a new array based on date
+    console.log("-----------------------------------------------");
+    for (i = 10; i > 0; i--) {
+      if (storedCars[i - 1]) {
+        console.log(storedCars[i - 1]);
+        newStorageCars.push(storedCars[i - 1]);
+      }
+    }
 
     // Check if stored car already exists in list
     let checkStorage = await StoredCar.findAll({
@@ -140,7 +150,7 @@ router.get("/inventory/:id", async (req, res) => {
     res.render("user-specific-inventory", {
       logged_in: req.session.logged_in,
       user: userPass,
-      storedCars,
+      newStorageCars,
       car,
       layout: "user-main.handlebars",
     });
