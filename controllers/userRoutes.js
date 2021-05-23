@@ -132,6 +132,7 @@ router.get("/inventory/:id", async (req, res) => {
         vin: car.vin,
         condition_of_car: car.condition_of_car,
         image: car.image,
+        url: car.url,
         sold: car.sold,
       });
     }
