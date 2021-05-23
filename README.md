@@ -2,6 +2,9 @@
 
 ## Description
 This group collaborative project made for a decent challenge tackling a very interesting concept. A dealership webpage with a functioning backend for the dealership owner as well as a functioning frontend for customers which serves that dealer backend. Justin handled the backend dealership portion and Daniel handled the frontend customer portion. The collaborative effort was welcome and very much needed for such a large project. For only having 2 weeks of preparation the execution was more than successful and helped our team grow immensely.
+
+Our final page is deployed here: https://rocky-river-62832.herokuapp.com/dealer
+
 Thank you for viewing our project and we hope you enjoy.
 
 ## Table of Contents
@@ -11,6 +14,8 @@ Thank you for viewing our project and we hope you enjoy.
 
 <a name="usage-dealer"></a>
 ## Usage: Dealer
+
+Directory found here: https://rocky-river-62832.herokuapp.com/dealer
 
 This page is located at the /dealer path and is required to move to access the rest of the dealer routes. Signing in or signing up happens here on the dealer end.
 ![Dealer Sign In Screen](assets/img/DealerSignIn.PNG?raw=true)
@@ -34,6 +39,8 @@ Finally, clicking "Your Website" from the dashboard or sidebar will take you to 
 
 <a name="usage-user"></a>
 ## Usage: User
+
+Directory found here: https://rocky-river-62832.herokuapp.com/user
 
 This page is the main landing page that customers will see upon entering your website.
 ![User Homepage screen](assets/img/UserDashboard.PNG?raw=true)
