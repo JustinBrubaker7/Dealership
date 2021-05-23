@@ -4,7 +4,6 @@
   "main": "server.js",
   "scripts": {
     "build-css": "tailwindcss build landing.css -o public/style.css",
-    "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
